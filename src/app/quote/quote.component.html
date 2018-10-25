@@ -1,4 +1,26 @@
-
-<div class="card">
-    <app-quotes-form></app-quotes-form>
+<div style="text-align:center">
+    <div class="container">
+        <h1>
+        Quotes
+    </h1>
 </div>
+<div class="card-group">
+    <div class="card" *ngFor='let quote of quotes; let i = index'>
+        <img class="img-fluid" src="assets/download.jpg" alt="Card image cap">
+        <div class="card-header">{{quote.name}}</div>
+        <div class="card-body">{{quote.quote}}</div>
+
+        <div class="card-footer">{{quote.upload|date}}
+            <div class="vote">
+                <button (click)='upvotebtn(i)'>Upvote</button>
+                <span>{{quote.upvote}}</span>
+
+                <button (click)='downvotebtn(i)'>Downvote</button>
+                <span>{{quote.downvote}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <app-quotes (addquote)='addnewquote($event)'></app-quotes>
+</div> 
